@@ -19,7 +19,17 @@ import (
 )
 
 const (
-	// ArgoCDKeyAdminEnabled is the configuration key for the admin enabled setting..
+
+	// ArgoCDKeyRespectRBAC is the configuration key for the respectRBAC setting.
+	ArgoCDKeyRespectRBAC = "resource.respectRBAC"
+
+	// ArgoCDValueRespectRBACStrict is the configuration value for the respectRBAC setting.
+	ArgoCDValueRespectRBACStrict = "strict"
+
+	// ArgoCDValueRespectRBACStrict is the configuration value for the respectRBAC setting.
+	ArgoCDValueRespectRBACNormal = "normal"
+
+	// ArgoCDKeyAdminEnabled is the configuration key for the admin enabled setting.
 	ArgoCDKeyAdminEnabled = "admin.enabled"
 
 	// ArgoCDKeyApplicationInstanceLabelKey is the configuration key for the application instance label.
@@ -171,6 +181,10 @@ const (
 	// ArgoCDImageEnvName is the environment variable used to get the image
 	// to used for the argocd container.
 	ArgoCDImageEnvName = "ARGOCD_IMAGE"
+
+	// ArgoCDExtensionImageEnvName is the environment variable used to get the image
+	// to be used for the Argo-CD extension image
+	ArgoCDExtensionImageEnvName = "ARGOCD_EXTENSION_IMAGE"
 
 	// ArgoCDKeycloakImageEnvName is the environment variable used to get the image
 	// to used for the Keycloak container.

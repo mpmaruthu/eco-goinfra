@@ -38,6 +38,7 @@ const (
 	RenderedTemplates          ClusterInstanceConditionType = "RenderedTemplates"
 	RenderedTemplatesValidated ClusterInstanceConditionType = "RenderedTemplatesValidated"
 	RenderedTemplatesApplied   ClusterInstanceConditionType = "RenderedTemplatesApplied"
+	RenderedTemplatesDeleted   ClusterInstanceConditionType = "RenderedTemplatesDeleted"
 	ClusterProvisioned         ClusterInstanceConditionType = "Provisioned"
 )
 
@@ -49,4 +50,21 @@ const (
 	InProgress      ClusterInstanceConditionReason = "InProgress"
 	Unknown         ClusterInstanceConditionReason = "Unknown"
 	StaleConditions ClusterInstanceConditionReason = "StaleConditions"
+)
+
+// The following constants define the different reinstall condition types
+const (
+	ReinstallRequestValidated            ClusterInstanceConditionType = "ReinstallRequestValidated"
+	ReinstallRequestProcessed            ClusterInstanceConditionType = "ReinstallRequestProcessed"
+	ReinstallPreservationDataBackedup    ClusterInstanceConditionType = "ReinstallPreservationDataBackedup"
+	ReinstallPreservationDataRestored    ClusterInstanceConditionType = "ReinstallPreservationDataRestored"
+	ReinstallClusterIdentityDataDetected ClusterInstanceConditionType = "ReinstallClusterIdentityDataDetected"
+	ReinstallRenderedManifestsDeleted    ClusterInstanceConditionType = "ReinstallRenderedManifestsDeleted"
+)
+
+// The following constants define additional reinstall condition reasons
+const (
+	PreservationNotRequired ClusterInstanceConditionReason = "PreservationNotRequired"
+	DataUnavailable         ClusterInstanceConditionReason = "DataUnavailable"
+	DataAvailable           ClusterInstanceConditionReason = "DataAvailable"
 )
