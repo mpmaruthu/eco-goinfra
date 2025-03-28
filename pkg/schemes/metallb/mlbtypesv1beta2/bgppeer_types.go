@@ -45,7 +45,16 @@ type BGPPeerSpec struct {
 	DynamicASN DynamicASNMode `json:"dynamicASN,omitempty"`
 
 	// Address to dial when establishing the session.
-	Address string `json:"peerAddress"`
+	// +optional
+	Address string `json:"peerAddress,omitempty"`
+
+	// Interface is the node interface over which the unnumbered BGP peering will
+	// be established. No API validation takes place as that string value
+	// represents an interface name on the host and if user provides an invalid
+	// value, only the actual BGP session will not be established.
+	// Address and Interface are mutually exclusive and one of them must be specified.
+	// +optional
+	Interface string `json:"interface,omitempty"`
 
 	// Source address to use when establishing the session.
 	// +optional
@@ -53,7 +62,7 @@ type BGPPeerSpec struct {
 
 	// Port to dial when establishing the session.
 	// +optional
-	// +kubebuilder:validation:Minimum=0
+	// +kubebuilder:validation:Minimum=1
 	// +kubebuilder:validation:Maximum=16384
 	// +kubebuilder:default:=179
 	Port uint16 `json:"peerPort,omitempty"`
@@ -96,10 +105,10 @@ type BGPPeerSpec struct {
 	// +optional
 	BFDProfile string `json:"bfdProfile,omitempty"`
 
-	// EnableGracefulRestart allows BGP peer to continue to forward data packets along
-	// known routes while the routing protocol information is being restored.
-	// This field is immutable because it requires restart of the BGP session
-	// Supported for FRR mode only.
+	// EnableGracefulRestart allows BGP peer to continue to forward data packets
+	// along known routes while the routing protocol information is being
+	// restored. This field is immutable because it requires restart of the BGP
+	// session. Supported for FRR mode only.
 	// +optional
 	// +kubebuilder:validation:XValidation:rule="self == oldSelf",message="EnableGracefulRestart cannot be changed after creation"
 	EnableGracefulRestart bool `json:"enableGracefulRestart,omitempty"`
